@@ -32,7 +32,7 @@ short_rate_df["short_rate"] = (
 short_rate_df["short_rate"] = pd.to_numeric(short_rate_df["short_rate"], errors="coerce")
 
 # Umwandeln von Prozent in numerisch
-short_rate_df["short_rate"] = short_rate_df["short_rate"] / 100
+short_rate_df["short_rate"] = short_rate_df["short_rate"]
 
 # In Quartale aggregieren
 short_rate_df = short_rate_df.set_index("date").resample("QE").mean().reset_index()
@@ -72,7 +72,7 @@ long_rate_df["long_rate"] = (
 long_rate_df["long_rate"] = pd.to_numeric(long_rate_df["long_rate"], errors="coerce")
 
 # Umwandeln von Prozent in numerisch
-long_rate_df["long_rate"] = long_rate_df["long_rate"] / 100
+long_rate_df["long_rate"] = long_rate_df["long_rate"]
 
 # In Quartale aggregieren
 long_rate_df = long_rate_df.set_index("date").resample("QE").mean().reset_index()
@@ -122,10 +122,10 @@ inflation_df = inflation_df.drop("country", axis=1)
 inflation_df = inflation_df.set_index("date").resample("QE").mean().reset_index()
 
 # Veränderung statt absolut
-inflation_df["inflation_qoq"] = inflation_df["inflation"].pct_change()
+#inflation_df["inflation_qoq"] = inflation_df["inflation"].pct_change()
 
 # Spalte mit absoluten Werten löschen
-inflation_df = inflation_df.drop("inflation", axis=1)
+#inflation_df = inflation_df.drop("inflation", axis=1)
 
 # Nur notwendige Quartale behalten
 inflation_df = inflation_df[
@@ -171,10 +171,10 @@ gdp_df = gdp_df.drop("country", axis=1)
 gdp_df = gdp_df.set_index("date").resample("QE").mean().reset_index()
 
 # Veränderung anstatt absolute Werte
-gdp_df["gdp_growth_qoq"] = gdp_df["gdp"].pct_change()
+#gdp_df["gdp_growth_qoq"] = gdp_df["gdp"].pct_change()
 
 #Spalte mit absoluten Werten löschen
-gdp_df = gdp_df.drop("gdp", axis=1)
+#gdp_df = gdp_df.drop("gdp", axis=1)
 
 # Nur notwendige Quartale behalten
 gdp_df = gdp_df[
