@@ -121,12 +121,6 @@ inflation_df = inflation_df.drop("country", axis=1)
 # In Quartale aggregieren
 inflation_df = inflation_df.set_index("date").resample("QE").mean().reset_index()
 
-# Veränderung statt absolut
-#inflation_df["inflation_qoq"] = inflation_df["inflation"].pct_change()
-
-# Spalte mit absoluten Werten löschen
-#inflation_df = inflation_df.drop("inflation", axis=1)
-
 # Nur notwendige Quartale behalten
 inflation_df = inflation_df[
     inflation_df["date"].isin(customer_df["date"])
@@ -169,12 +163,6 @@ gdp_df = gdp_df.drop("country", axis=1)
 
 # In Quartale aggregieren
 gdp_df = gdp_df.set_index("date").resample("QE").mean().reset_index()
-
-# Veränderung anstatt absolute Werte
-#gdp_df["gdp_growth_qoq"] = gdp_df["gdp"].pct_change()
-
-#Spalte mit absoluten Werten löschen
-#gdp_df = gdp_df.drop("gdp", axis=1)
 
 # Nur notwendige Quartale behalten
 gdp_df = gdp_df[
