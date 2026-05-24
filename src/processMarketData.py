@@ -1,6 +1,8 @@
 import pandas as pd
 
 def clean_market_data():
+    print("starting processing market data")
+    print("this may take a while (up to 3 minutes)")
 
     customer_df = pd.read_csv("src/dataProcessed/customer_data_clean.csv")
     customer_df["date"] = pd.to_datetime(customer_df["date"])
@@ -184,3 +186,5 @@ def clean_market_data():
     # In csv-Datei speichern
     output_path = "src/dataProcessed/processedData.csv"
     customer_df.to_csv(output_path, index=False)
+
+    print("finished processing market data")

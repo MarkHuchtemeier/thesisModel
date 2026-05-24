@@ -5,7 +5,8 @@ from scipy.stats import shapiro
 from statsmodels.stats.diagnostic import linear_reset, het_white
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
-def modelling_regression(filepath_dataset, features):
+def modelling_regression(filepath_dataset, features, roundname):
+    print("starting modelling regression for" + roundname)
     df = pd.read_csv(filepath_dataset)
     df["date"] = pd.to_datetime(df["date"])
     df = df.sort_values("date")
@@ -96,7 +97,9 @@ def modelling_regression(filepath_dataset, features):
     # -------------------------
     # Residuenplot: Residuen gegen fitted values
     # -------------------------
-    plt.figure(figsize=(7, 5))
+    fig = plt.figure(figsize=(7, 5))
+    fig.canvas.manager.set_window_title(f"Residuen vs. Fitted Values - {roundname}")
+
     plt.scatter(fitted, residuals)
     plt.axhline(0, linestyle="--")
     plt.xlabel("Fitted values")
@@ -107,7 +110,9 @@ def modelling_regression(filepath_dataset, features):
     # -------------------------
     # Verteilungsplot der Residuen: Histogramm
     # -------------------------
-    plt.figure(figsize=(7, 5))
+    fig = plt.figure(figsize=(7, 5))
+    fig.canvas.manager.set_window_title(f"Histogram der Residuen - {roundname}")
+    
     plt.hist(residuals, bins=10)
     plt.xlabel("Residuals")
     plt.ylabel("Frequency")
@@ -117,7 +122,10 @@ def modelling_regression(filepath_dataset, features):
     # -------------------------
     # QQ-Plot der Residuen
     # -------------------------
-    plt.figure(figsize=(7, 5))
-    sm.qqplot(residuals, line="45", fit=True)
+    fig = sm.qqplot(residuals, line="45", fit=True)
+    fig.canvas.manager.set_window_title(f"QQ-Plot Residuals - {roundname}")
+
     plt.tight_layout()
     plt.show()
+
+    print("finished modelling regression for" + roundname)

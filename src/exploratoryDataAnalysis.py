@@ -4,6 +4,7 @@ import matplotlib.ticker as ticker
 import seaborn as sns
 
 def exploratory_analysis():
+    print("starting exploratory analysis")
     df = pd.read_csv("src/dataProcessed/processedData.csv")
     df["date"] = pd.to_datetime(df["date"])
 
@@ -19,6 +20,9 @@ def exploratory_analysis():
 
     # alle Histogramme in einem Raster
     axes = df[numeric_cols].hist(figsize=(14, 10), bins=15)
+
+    fig = axes[0, 0].get_figure()
+    fig.canvas.manager.set_window_title("Histogramme numerischer Variablen")
 
     # Durch alle Subplots gehen
     for ax in axes.flatten():
@@ -36,6 +40,7 @@ def exploratory_analysis():
     corr_matrix = df[numeric_cols].corr()
 
     fig, ax = plt.subplots(figsize=(16, 12))
+    fig.canvas.manager.set_window_title("Korrelationsmatrix")
 
     sns.heatmap(
         corr_matrix,
@@ -105,3 +110,5 @@ def exploratory_analysis():
     print(summary_table)
     #print(latex_table)
     #print(corr_latex)
+    
+    print("finished exploratory analysis")

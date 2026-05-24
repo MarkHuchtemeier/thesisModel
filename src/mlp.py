@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPRegressor
 
 def modelling_mlp():
+    print("starting modelling of mlp")
     # --------------------------------------------------
     # Daten laden
     # --------------------------------------------------
@@ -187,3 +188,5 @@ def modelling_mlp():
     #    caption="Ergebnisse der Time-Series-Cross-Validation des MLP-Modells",
     #    label="tab:mlp_cv_results"
     #))
+
+    print("finished modelling of mlp")

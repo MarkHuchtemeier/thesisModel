@@ -37,9 +37,9 @@ def main():
     clean_market_data()
     transform_data()
     exploratory_analysis()
-    modelling_regression(filepath_full_baseline, features_full_baseline)
-    modelling_regression(filepath_reduced_regression, features_reduced_regression)
-    modelling_regression(filepath_final_regression, features_final_regression)
+    modelling_regression(filepath_full_baseline, features_full_baseline, "first regression")
+    modelling_regression(filepath_reduced_regression, features_reduced_regression, "second regression")
+    modelling_regression(filepath_final_regression, features_final_regression, "final regression")
     modelling_mlp()
 
 if __name__ == "__main__":

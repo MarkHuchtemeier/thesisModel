@@ -1,7 +1,7 @@
 import pandas as pd
 
 def transform_data():
-
+    print("starting transformation of data")
     # =========================
     # 1. Daten einlesen
     # =========================
@@ -88,3 +88,5 @@ def transform_data():
     print("\nMit Lags:")
     print(df_model_lag.head())
     print(df_model_lag.shape)
+
+    print("finished transformation of data")

@@ -1,6 +1,7 @@
 import pandas as pd
 
 def clean_customer_data():
+    print("strating processing customer data")
     # Pfad Kundendaten
     file_path = "src/dataRaw/portfolio_data.csv"
 
@@ -72,3 +73,5 @@ def clean_customer_data():
     # Bereinigte Datei speichern
     output_path = "src/dataProcessed/customer_data_clean.csv"
     df.to_csv(output_path, index=False)
+
+    print("finished processing customer data")
